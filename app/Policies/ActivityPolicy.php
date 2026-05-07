@@ -10,6 +10,10 @@ class ActivityPolicy
 {
     public function view(User $user, Activity $activity)
     {
-        return $user->id === $activity->user_id;
+        return $user->isOwner($activity);
+    }
+    public function delete(User $user, Activity $activity)
+    {
+        return $user->isOwner($activity);
     }
 }

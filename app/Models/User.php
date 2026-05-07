@@ -30,6 +30,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function isOwner(Activity $activity): bool
+    {
+        return $this->id === $activity->user_id;
+    }
+
     public function activities()
     {
         return $this->hasMany(Activity::class);

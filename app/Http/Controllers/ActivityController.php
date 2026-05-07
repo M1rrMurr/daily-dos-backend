@@ -19,4 +19,11 @@ class ActivityController extends Controller
     {
         return new ActivityResource($activity->load('tags'));
     }
+
+    public function destroy(Activity $activity)
+    {
+        $activity->delete();
+
+        return response()->json(['message' => 'activity has deleted']);
+    }
 }
